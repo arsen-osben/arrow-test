@@ -1,0 +1,90 @@
+<div class="container" *ngIf="editForm">
+  <h2>Редагування тесту</h2>
+  <form [formGroup]="editForm" (ngSubmit)="saveTest()">
+    <div class="form-group">
+      <label for="testId">ID теста</label>
+      <input type="text" id="testId" formControlName="testId" class="form-control">
+      <div *ngIf="editForm.get('testId')?.invalid && editForm.get('testId')?.touched" class="error">
+        <div *ngIf="editForm.get('testId')?.errors?.['pattern']">Тільки цифри</div>
+        <div *ngIf="editForm.get('testId')?.errors?.['required']">Поле обов'язкове</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="testName">Назва теста</label>
+      <input type="text" id="testName" formControlName="testName" class="form-control">
+      <div *ngIf="editForm.get('testName')?.invalid && editForm.get('testName')?.touched" class="error">
+        <div *ngIf="editForm.get('testName')?.errors?.['required']">Поле обов'язкове</div>
+        <div *ngIf="editForm.get('testName')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <hr>
+
+    <div formArrayName="questions" class="question-list">
+      <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+        <div class="form-group">
+          <label for="questionId-{{i}}">ID питання:</label>
+          <input type="text" id="questionId-{{i}}" formControlName="questionId" class="form-control">
+          <div *ngIf="question.get('questionId')?.invalid && question.get('questionId')?.touched" class="error">
+            <div *ngIf="question.get('questionId')?.errors?.['pattern']">Тільки цифри</div>
+            <div *ngIf="question.get('questionId')?.errors?.['required']">Поле обов'язкове</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="questionText-{{i}}">Текст питання:</label>
+          <input type="text" id="questionText-{{i}}" formControlName="questionText" class="form-control">
+          <div *ngIf="question.get('questionText')?.invalid && question.get('questionText')?.touched" class="error">
+            <div *ngIf="question.get('questionText')?.errors?.['required']">Поле обов'язкове</div>
+            <div *ngIf="question.get('questionText')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
+          </div>
+        </div>
+
+        <div class="form-item-check">
+          <input type="checkbox" formControlName="isEnd" id="isEnd-{{i}}">
+          <label for="isEnd-{{i}}">Кінець тесту</label>
+        </div>
+
+        <div class="remove-question">
+          <button type="button" (click)="removeQuestion(i)" class="button button-remove">Видалити питання</button>
+        </div>
+
+        <div formArrayName="answers" class="answer-list">
+          <div *ngFor="let answer of getAnswers(i).controls; let j = index" [formGroupName]="j" class="answer">
+            <div *ngIf="answer.get('text')?.invalid && answer.get('text')?.touched" class="error">
+              <div *ngIf="answer.get('text')?.errors?.['required']">Поле обов'язкове</div>
+            </div>
+            <div class="form-group">
+              <label for="answerText-{{i}}-{{j}}">Текст відповіді:</label>
+              <input type="text" id="answerText-{{i}}-{{j}}" formControlName="text" class="form-control">
+            </div>
+
+            <div *ngIf="answer.get('nextQuestionId')?.invalid && answer.get('nextQuestionId')?.touched" class="error">
+              <div *ngIf="answer.get('nextQuestionId')?.errors?.['pattern']">Тільки цифри</div>
+              <div *ngIf="answer.get('nextQuestionId')?.errors?.['required']">Поле обов'язкове</div>
+            </div>
+            <div class="form-group">
+              <label for="nextQuestionId-{{i}}-{{j}}">ID наступного кроку:</label>
+              <input type="number" id="nextQuestionId-{{i}}-{{j}}" formControlName="nextQuestionId"
+                     class="form-control">
+            </div>
+            <button type="button" (click)="removeAnswer(i, j)" class="button button-remove">Видалити відповідь</button>
+
+          </div>
+          <button type="button" (click)="addAnswer(i)" class="button button-add-answer">Додати відповідь</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="btn-nav">
+      <button type="button" (click)="addQuestion()" class="button button-add-question">Додати питання</button>
+      <div>
+        <button type="submit" class="button button-save">Зберегти</button>
+        <button type="button" (click)="cancel()" class="button button-cansel">Скасувати</button>
+      </div>
+    </div>
+  </form>
+</div>

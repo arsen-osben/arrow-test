@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Оберіть тест для редагування або <button type="button" (click)="gotoAddTest()" class="button btn-add">Створіть новий тест</button></h2>
+  <div *ngFor="let test of allTests; let i = index" class="list-test">
+    <div class="item">
+      {{ test.name }}
+      <div class="btn-nav">
+      <button type="button" (click)="editTest(test.id)" class="button button-edit">Редагувати</button>
+      <button type="button" (click)="removeTest(test.id)" class="button button-remove">Видалити</button>
+      </div>
+    </div>
+  </div>
+</div>

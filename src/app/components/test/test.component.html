@@ -1,0 +1,21 @@
+<div class="test">
+  <h1>Тест {{ testId }}</h1>
+  <div *ngFor="let question of questions">
+    <h2>{{ question.question }}</h2>
+    <ul class="list-test">
+      <li *ngFor="let answer of question.answers">
+        {{ answer.text }}
+      </li>
+    </ul>
+  </div>
+</div>
+<!--<div *ngIf="currentQuestion && !currentQuestion.isEnd">
+  <h2>{{ currentQuestion.question }}</h2>
+  <div class="item" *ngFor="let answer of currentQuestion.answers">
+    <button (click)="selectAnswer(answer.nextQuestionId)">{{ answer.text }}</button>
+  </div>
+</div>
+
+<div *ngIf="currentQuestion && currentQuestion.isEnd">
+  <h2>{{ currentQuestion.question }}</h2>
+</div>-->

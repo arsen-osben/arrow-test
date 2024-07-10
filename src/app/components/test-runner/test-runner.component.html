@@ -1,0 +1,17 @@
+<div *ngIf="test">
+
+  <div *ngIf="currentQuestion">
+    <div class="question">{{ currentQuestion.question }}</div>
+
+      <div class="item" *ngFor="let answer of currentQuestion.answers">
+        <button (click)="answerQuestion(answer.nextQuestionId)">{{ answer.text }}</button>
+      </div>
+
+  </div>
+  <div *ngIf="!currentQuestion">
+    <p>Тест завершено!</p>
+  </div>
+</div>
+<div *ngIf="!test">
+  <p>Тест не знайдено.</p>
+</div>
