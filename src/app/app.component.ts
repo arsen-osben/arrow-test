@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {TestComponent} from './components/test/test.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {AuthService} from "./services/auth.service";
 
 
 @Component({
@@ -16,4 +17,12 @@ import {RouterModule} from '@angular/router';
 })
 export class AppComponent {
   title = 'Arrow Test';
+
+  constructor(public authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+    return false;
+  }
 }

@@ -1,0 +1,161 @@
+h2 {
+  text-align: center;
+  font-size: 21px;
+  margin: 0 0 30px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+hr {
+  color: #333;
+  height: 0;
+  border: 2px solid #333;
+  display: block;
+  width: 100%;
+  margin: 15px 0 30px 0;
+}
+
+.form-group {
+  display: flex;
+  padding: 0 0 15px 0;
+  align-items: flex-start;
+
+  label {
+    display: block;
+    padding: 5px 10px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 15px;
+    background: none;
+
+    &:focus {
+      border-color: #000
+    }
+  }
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-item-answer {
+  display: block;
+  padding: 0 0 15px 0;
+  align-items: flex-start;
+
+  label {
+    display: block;
+    padding: 0 0 10px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+  }
+}
+
+.error {
+  color: #f00;
+  margin: -7px 0 15px 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+.form-item-check {
+  padding: 10px 0 30px 200px;
+  align-items: center;
+
+  label {
+    cursor: pointer;
+  }
+
+  input {
+    margin: 0 10px 0 0;
+  }
+}
+
+.button {
+  display: inline-flex;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background: #efefef;
+  font-weight: 500;
+  border: 2px solid transparent;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: #000;
+    color: #000;
+  }
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.button-block {
+  text-align: center;
+  display: block;
+  width: 100%;
+
+}
+
+.remove-question {
+  padding: 0 0 20px 0;
+  text-align: right;
+}
+
+.answer-list {
+  border-top: 2px solid #666;
+  padding: 20px 0 0 0;
+}
+.answer {
+  border-bottom: 2px solid #666;
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+}
+
+.button-cansel {
+  filter: brightness(90%);
+}
+
+.btn-nav {
+  display: flex;
+  justify-content: space-between;
+  border-top: 4px solid #111;
+  padding: 20px 0;
+  margin: 20px 0 0 0;
+}
+
+.button-save {
+  margin: 0 15px;
+  background: gray;
+  color: #fff;
+  cursor: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 69.38 122.88' style='enable-background:new 0 0 69.38 122.88' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st0%7Bfill:%23383838;%7D .st1%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23FCDB33;%7D .st2%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23FFFF00;%7D%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M21.34,0.41L65.26,0c0.81-0.04,1.64,0.18,2.37,0.66c1.81,1.21,2.3,3.67,1.08,5.48L45.77,40.38h19.45v0.01 c0.88,0,1.77,0.29,2.51,0.9c1.68,1.39,1.93,3.87,0.54,5.56L7,121.44c-1.06,1.29-2.87,1.81-4.51,1.16c-2.03-0.8-3.02-3.1-2.21-5.13 L21.32,64.5L5.55,64.35c-0.45,0.03-0.9-0.01-1.36-0.14c-2.1-0.6-3.32-2.79-2.72-4.89l16.1-56.04l0.01,0 C18.04,1.64,19.54,0.43,21.34,0.41L21.34,0.41z'/%3E%3Cpolygon class='st1' points='65.43,3.95 21.37,4.36 5.27,60.4 27.11,60.61 3.95,118.93 65.22,44.34 38.35,44.34 65.43,3.95'/%3E%3Cpolygon class='st2' points='33.9,4.52 21.66,4.75 6.23,60.09 27.24,60.57 3.95,118.93 35.21,55.03 16.58,51.85 33.9,4.52'/%3E%3C/g%3E%3C/svg%3E"), auto;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.button-cansel {
+  cursor: alias;
+}
+
+.button-add-question, .button-add-answer {
+  cursor: copy;
+}
+.button-remove {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='33'%3E%3Cpath d='M21.129.04c-.313.046-.52.1-.79.206-.972.383-1.636 1.113-1.843 2.031-.066.297-.055.774.027 1.086.13.48.418.953.79 1.297.671.621 1.695.953 2.644.86.168-.016.363-.043.43-.06.625-.144 1.218-.448 1.613-.827.578-.551.902-1.371.82-2.09-.086-.75-.472-1.402-1.11-1.875a4.127 4.127 0 0 0-1.07-.523A3.768 3.768 0 0 0 21.13.039ZM21.223 6.191c-1.211.008-4.137.032-6.512.047-2.375.016-5.082.04-6.016.047l-1.703.02-.129.066c-.164.082-.246.2-.246.352 0 .215.192.449.438.53.066.024.472.095.906.157.434.063 1.262.188 1.844.274.586.086 1.37.199 1.754.257.382.055 1.168.172 1.754.258.582.086 1.367.2 1.75.258 3.12.457 3.054.445 3.421.617.399.188.657.406.883.742.055.082.188.356.297.614l.957 2.222.758 1.758h.234c.13 0 .844-.015 1.582-.039 2.403-.066 3.18-.09 4.64-.129 1.606-.039 1.895-.05 1.985-.09.11-.039.176-.12.176-.21 0-.098.031-.032-1.238-2.407-2.149-4.012-2.68-5.008-2.778-5.187l-.097-.188-1.235.008c-.675 0-2.218.012-3.425.023ZM4.535 8.293a3.31 3.31 0 0 0-.265.242c-.008.012 1.539 1.356 1.804 1.57.04.032.055.098.074.286.067.671.25 1.27.508 1.64.07.098 2.54 2.239 2.617 2.27.02.008.489-.38 1.063-.871.562-.485 1.066-.914 1.117-.957.047-.04.078-.086.063-.098-.012-.012-.598-.516-1.301-1.117-.942-.809-1.32-1.117-1.426-1.168a6.29 6.29 0 0 0-1.125-.344 5.447 5.447 0 0 0-.64-.07l-.337-.016-.925-.797c-.512-.433-.934-.793-.95-.793-.007 0-.136.102-.277.223ZM22.047 14.953c0 .012-.02.027-.035.027-.024 0-.328.954-.899 2.813-.476 1.55-1.672 5.426-2.652 8.613a677.508 677.508 0 0 0-1.797 5.914c-.027.258.098.473.356.594.132.066.175.074.41.07.312 0 .492-.058.683-.222.117-.106.278-.418 3.266-6.325 1.73-3.414 3.176-6.242 3.215-6.28.156-.165.328-.184.433-.055.063.082.082.152.168.691.04.238.125.77.196 1.172.12.707.687 4.004 1.074 6.238.098.59.3 1.762.445 2.606.285 1.68.293 1.699.492 1.847.157.117.29.149.606.149.246 0 .293-.008.437-.075.192-.082.34-.23.356-.355.008-.047.02-.195.027-.328.012-.2.524-7.645.879-12.8.043-.626.102-1.485.129-1.911.035-.422.074-1.012.094-1.305.035-.472.035-.543-.004-.648a.714.714 0 0 0-.356-.387l-.136-.07h-3.696c-2.441 0-3.691.008-3.691.027ZM.105 15.469a.303.303 0 0 0-.07.351c.067.137.145.16.578.168.262 0 .387.012.395.032.008.015.082.43.168.918.086.492.262 1.492.39 2.23l.657 3.738c.23 1.317.53 3.032.668 3.805.296 1.695.695 3.98.851 4.852l.113.636 4.747-.004 4.746-.008 1.222-8.03 1.227-8.071c0-.027-.035-.05-.086-.066-.059-.016.066-.024.418-.036l.504-.011.078-.082a.297.297 0 0 0-.05-.457c-.071-.04-.622-.043-8.274-.043h-8.2Zm0 0' style='stroke:none;fill-rule:nonzero;fill:%23000;fill-opacity:1'/%3E%3C/svg%3E"), auto;
+}

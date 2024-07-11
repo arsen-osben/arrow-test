@@ -1,23 +1,25 @@
 <div class="container" *ngIf="editForm">
   <h2>Редагування тесту</h2>
   <form [formGroup]="editForm" (ngSubmit)="saveTest()">
+    <div *ngIf="editForm.get('testId')?.invalid && editForm.get('testId')?.touched" class="error">
+      <div *ngIf="editForm.get('testId')?.errors?.['pattern']">Тільки цифри</div>
+      <div *ngIf="editForm.get('testId')?.errors?.['required']">Поле обов'язкове</div>
+    </div>
     <div class="form-group">
       <label for="testId">ID теста</label>
       <input type="text" id="testId" formControlName="testId" class="form-control">
-      <div *ngIf="editForm.get('testId')?.invalid && editForm.get('testId')?.touched" class="error">
-        <div *ngIf="editForm.get('testId')?.errors?.['pattern']">Тільки цифри</div>
-        <div *ngIf="editForm.get('testId')?.errors?.['required']">Поле обов'язкове</div>
-      </div>
     </div>
 
+
+    <div *ngIf="editForm.get('testName')?.invalid && editForm.get('testName')?.touched" class="error">
+      <div *ngIf="editForm.get('testName')?.errors?.['required']">Поле обов'язкове</div>
+      <div *ngIf="editForm.get('testName')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
+    </div>
     <div class="form-group">
       <label for="testName">Назва теста</label>
       <input type="text" id="testName" formControlName="testName" class="form-control">
-      <div *ngIf="editForm.get('testName')?.invalid && editForm.get('testName')?.touched" class="error">
-        <div *ngIf="editForm.get('testName')?.errors?.['required']">Поле обов'язкове</div>
-        <div *ngIf="editForm.get('testName')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
-      </div>
     </div>
+
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
     <hr>
@@ -27,19 +29,19 @@
         <div class="form-group">
           <label for="questionId-{{i}}">ID питання:</label>
           <input type="text" id="questionId-{{i}}" formControlName="questionId" class="form-control">
-          <div *ngIf="question.get('questionId')?.invalid && question.get('questionId')?.touched" class="error">
-            <div *ngIf="question.get('questionId')?.errors?.['pattern']">Тільки цифри</div>
-            <div *ngIf="question.get('questionId')?.errors?.['required']">Поле обов'язкове</div>
-          </div>
+        </div>
+        <div *ngIf="question.get('questionId')?.invalid && question.get('questionId')?.touched" class="error">
+          <div *ngIf="question.get('questionId')?.errors?.['pattern']">Тільки цифри</div>
+          <div *ngIf="question.get('questionId')?.errors?.['required']">Поле обов'язкове</div>
         </div>
 
         <div class="form-group">
           <label for="questionText-{{i}}">Текст питання:</label>
           <input type="text" id="questionText-{{i}}" formControlName="questionText" class="form-control">
-          <div *ngIf="question.get('questionText')?.invalid && question.get('questionText')?.touched" class="error">
-            <div *ngIf="question.get('questionText')?.errors?.['required']">Поле обов'язкове</div>
-            <div *ngIf="question.get('questionText')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
-          </div>
+        </div>
+        <div *ngIf="question.get('questionText')?.invalid && question.get('questionText')?.touched" class="error">
+          <div *ngIf="question.get('questionText')?.errors?.['required']">Поле обов'язкове</div>
+          <div *ngIf="question.get('questionText')?.errors?.['minlength']">Не менше 1 символа повинно бути</div>
         </div>
 
         <div class="form-item-check">
