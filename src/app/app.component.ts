@@ -1,28 +1,36 @@
-import {Component} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
-import {CommonModule} from '@angular/common';
-import {TestComponent} from './components/test/test.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {AuthService} from "./services/auth.service";
-
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from './services/auth.service';
+import { User } from './models/user.model';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, TestComponent, FormsModule, RouterModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
 })
-export class AppComponent {
-  title = 'Arrow Test';
+export class AppComponent implements OnInit {
+  isLoggedIn = false;
+  currentUser: User | null = null;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
-  logout() {
+  ngOnInit(): void {
+    this.authService.authChanged.subscribe((isLoggedIn: boolean) => {
+      this.isLoggedIn = isLoggedIn;
+      this.currentUser = this.authService.getCurrentUser();
+    });
+
+    this.isLoggedIn = this.authService.getIsLoggedIn();
+    this.currentUser = this.authService.getCurrentUser();
+  }
+
+  logout(): void {
     this.authService.logout();
-    this.router.navigate(['/']);
-    return false;
+    this.isLoggedIn = false;
+    this.currentUser = null;
   }
 }

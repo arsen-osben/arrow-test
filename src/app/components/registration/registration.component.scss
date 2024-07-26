@@ -1,0 +1,107 @@
+h2 {
+  text-align: center;
+  font-size: 21px;
+  margin: 0 0 30px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+hr {
+  color: #333;
+  height: 0;
+  border: 2px solid #333;
+  display: block;
+  width: 100%;
+  margin: 15px 0 30px 0;
+}
+
+.form-group {
+  display: flex;
+  padding: 0 0 15px 0;
+  align-items: flex-start;
+  position: relative;
+
+  label {
+    display: block;
+    padding: 5px 10px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 15px;
+    background: none;
+
+    &:focus {
+      border-color: #000
+    }
+  }
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.button-look-pass {
+  width: 39px;
+  height: 39px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid #333;
+  cursor: pointer;
+  border-radius: 5px;
+  background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 512 512'%3E%3Cpath d='M494.8 241.4 444.2 192c-50.1-48.9-116.9-75.8-188.2-75.8S117.9 143.1 67.8 192l-50.6 49.4c-11.3 12.3-4.3 25.4 0 29.2L67.8 320c50.1 48.9 116.9 75.8 188.2 75.8s138.1-26.9 188.2-75.8l50.6-49.4c4-3.8 11.7-16.4 0-29.2zM256 325.8c-38.5 0-69.8-31.3-69.8-69.8s31.3-69.8 69.8-69.8 69.8 31.3 69.8 69.8-31.3 69.8-69.8 69.8zM60.7 256l35.7-34.8c27-26.4 59.8-45.2 95.7-55.4-28.2 20.1-46.6 53-46.6 90.1 0 37.1 18.4 70.1 46.6 90.1-35.9-10.2-68.7-29-95.7-55.3L60.7 256zm355 34.8c-27 26.3-59.8 45.1-95.7 55.3 28.2-20.1 46.6-53 46.6-90.1 0-37.2-18.4-70.1-46.6-90.1 35.9 10.2 68.7 29 95.7 55.4l35.6 34.8-35.6 34.7z'/%3E%3C/svg%3E") center center no-repeat;
+  background-size: 30px auto;
+}
+
+.error {
+  color: #f00;
+  margin: 0 0 5px 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+
+.button {
+  display: inline-flex;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background: #efefef;
+  font-weight: 500;
+  border: 2px solid transparent;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: #000;
+    color: #000;
+  }
+}
+
+.button-save {
+  background: gray;
+  color: #fff;
+  cursor: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 69.38 122.88' style='enable-background:new 0 0 69.38 122.88' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st0%7Bfill:%23383838;%7D .st1%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23FCDB33;%7D .st2%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23FFFF00;%7D%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M21.34,0.41L65.26,0c0.81-0.04,1.64,0.18,2.37,0.66c1.81,1.21,2.3,3.67,1.08,5.48L45.77,40.38h19.45v0.01 c0.88,0,1.77,0.29,2.51,0.9c1.68,1.39,1.93,3.87,0.54,5.56L7,121.44c-1.06,1.29-2.87,1.81-4.51,1.16c-2.03-0.8-3.02-3.1-2.21-5.13 L21.32,64.5L5.55,64.35c-0.45,0.03-0.9-0.01-1.36-0.14c-2.1-0.6-3.32-2.79-2.72-4.89l16.1-56.04l0.01,0 C18.04,1.64,19.54,0.43,21.34,0.41L21.34,0.41z'/%3E%3Cpolygon class='st1' points='65.43,3.95 21.37,4.36 5.27,60.4 27.11,60.61 3.95,118.93 65.22,44.34 38.35,44.34 65.43,3.95'/%3E%3Cpolygon class='st2' points='33.9,4.52 21.66,4.75 6.23,60.09 27.24,60.57 3.95,118.93 35.21,55.03 16.58,51.85 33.9,4.52'/%3E%3C/g%3E%3C/svg%3E"), auto;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+

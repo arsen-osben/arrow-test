@@ -16,7 +16,8 @@ export interface Question {
 export interface Test {
   id: number;
   name: string;
-  questions: Question[]
+  questions: Question[];
+  creationDate: string;
 }
 
 @Injectable({
@@ -114,7 +115,7 @@ export class TestService {
         questions: [
           {
             id: 1,
-            question: 'Чому ви хочете вивчити програмування?',
+            question: 'Чому*ви*хочете*вивчити*програмування?',
             answers: [
               {text: 'Я - дитина/підліток, цікаво спробувати', nextQuestionId: 2},
               {text: 'Заробляти грошенята', nextQuestionId: 3},
@@ -293,7 +294,120 @@ export class TestService {
             answers: [],
             isEnd: true
           },
-        ]
+        ],
+        creationDate: '2024-07-21T09:45:43.081Z'
+      },
+      {
+        id: 2,
+        name: 'Йти гуляти чи ні?',
+        questions: [
+          {
+            id: 1,
+            question: 'На*вулиці*сонячно?',
+            answers: [
+              {text: 'Так', nextQuestionId: 2},
+              {text: 'Ні', nextQuestionId: 3},
+            ],
+            isEnd: false
+          },
+          {
+            id: 2,
+            question: 'За вікном тепло?',
+            answers: [
+              {text: 'Так', nextQuestionId: 4},
+              {text: 'Ні', nextQuestionId: 5},
+            ],
+            isEnd: false
+          },
+
+          {
+            id: 4,
+            question: 'Бігом на вулицю',
+            answers: [],
+            isEnd: true
+          },
+          {
+            id: 3,
+            question: 'Йде дощ/ливень/завірюха/торнадо/смерч ?',
+            answers: [
+              {text: 'Так', nextQuestionId: 5},
+              {text: 'Ні', nextQuestionId: 4},
+            ],
+            isEnd: false
+          },
+          {
+            id: 5,
+            question: 'Краще залишитись вдома',
+            answers: [],
+            isEnd: true
+          },
+        ],
+        creationDate: '2024-07-23T09:45:43.081Z'
+      },
+      {
+        id: 3,
+        name: 'Видати кредит чи відмовити?',
+        questions: [
+          {
+            id: 1,
+            question: 'Вік замовника більше 40 років?',
+            answers: [
+              {text: 'Так', nextQuestionId: 2},
+              {text: 'Ні', nextQuestionId: 3},
+            ],
+            isEnd: false
+          },
+          {
+            id: 2,
+            question: 'Ціль кредитування?',
+            answers: [
+              {text: 'Відкриття бізнесу', nextQuestionId: 4},
+              {text: 'Споживчі витрати', nextQuestionId: 5},
+            ],
+            isEnd: false
+          },
+
+          {
+            id: 5,
+            question: 'Видати кредит',
+            answers: [],
+            isEnd: true
+          },
+          {
+            id: 4,
+            question: 'Є бізнем-план?',
+            answers: [
+              {text: 'Так', nextQuestionId: 5},
+              {text: 'Ні', nextQuestionId: 6},
+            ],
+            isEnd: false
+          },
+          {
+            id: 6,
+            question: 'Відмовити у видачі',
+            answers: [],
+            isEnd: true
+          },
+          {
+            id: 3,
+            question: 'Відмінна кредитна історія?',
+            answers: [
+              {text: 'Так', nextQuestionId: 5},
+              {text: 'Ні', nextQuestionId: 7},
+            ],
+            isEnd: false
+          },
+          {
+            id: 7,
+            question: 'Є майно під заставу?',
+            answers: [
+              {text: 'Так', nextQuestionId: 5},
+              {text: 'Ні', nextQuestionId: 6},
+            ],
+            isEnd: false
+          },
+        ],
+        creationDate: '2024-07-25T09:45:43.081Z'
       },
     ];
   }

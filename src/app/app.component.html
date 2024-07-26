@@ -1,10 +1,13 @@
 <div class="container">
   <nav>
     <ul class="nav">
-      <li><a [routerLink]="''">Main page</a></li>
-      <li><a [routerLink]="'test-editor'">Test editor</a></li>
-      <li *ngIf="authService.getIsLoggedIn()"><a (click)="logout()" href="">Logout</a></li>
+      <li><a routerLink="">Main page</a></li>
+      <li><a routerLink="test-editor">Test editor</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="login">Login</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="registration">Register</a></li>
+      <li *ngIf="isLoggedIn"><a [routerLink]="['/user', currentUser?.name]">Profile</a></li>
+      <li *ngIf="isLoggedIn"><a (click)="logout()" href="">Logout</a></li>
     </ul>
   </nav>
-  <router-outlet/>
+  <router-outlet></router-outlet>
 </div>

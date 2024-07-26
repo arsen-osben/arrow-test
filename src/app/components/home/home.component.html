@@ -1,8 +1,13 @@
 <div>
   <h2>Список тестів</h2>
+  <div class="sorting-buttons">
+    <button (click)="sortTests('date')">По даті</button>
+    <button (click)="sortTests('name')">По алфавіту</button>
+    <button (click)="sortTests('questions')">За кількістю питань</button>
+  </div>
   <ol class="list-test">
     <li *ngFor="let test of tests">
-      <a (click)="navigateToTest(test.id)" [attr.data-replace]="test.name"><span>{{test.name}}</span></a>
+      <a (click)="navigateToTest(test.id)" [attr.data-replace]="test.name">{{ test.name }}</a>
     </li>
   </ol>
 </div>

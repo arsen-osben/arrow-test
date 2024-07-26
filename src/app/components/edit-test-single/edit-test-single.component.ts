@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {TestService, Test} from '../../services/test.service';
-import {FormBuilder, FormGroup, Validators, FormArray, AbstractControl} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TestService, Test } from '../../services/test.service';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-test-single',
@@ -17,7 +17,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class EditTestSingleComponent implements OnInit {
   editForm: FormGroup;
-  test: Test = {id: 0, name: '', questions: []};
+  test: Test = { id: 0, name: '', questions: [], creationDate: '' };
   errorMessage: string | null = null;
 
   constructor(
@@ -39,7 +39,7 @@ export class EditTestSingleComponent implements OnInit {
       const id = parseInt(testId!, 10);
       const existingTest = this.testService.getTestById(id);
       if (existingTest) {
-        this.test = {...existingTest};
+        this.test = { ...existingTest };
 
         // Populate form with existing test data
         this.editForm.patchValue({
@@ -66,7 +66,6 @@ export class EditTestSingleComponent implements OnInit {
   }
 
   saveTest(): void {
-
     if (this.editForm.invalid) {
       this.errorMessage = 'Перевірте форму на наявність помилок.';
       return;
@@ -78,42 +77,39 @@ export class EditTestSingleComponent implements OnInit {
       questions: this.editForm.value.questions.map((question: any) => ({
         id: parseInt(question.questionId, 10),
         question: question.questionText,
-        isEnd: question.isEnd,
+        isEnd: question.isEnd === true,
         answers: question.answers.map((answer: any) => ({
           text: answer.text,
           nextQuestionId: parseInt(answer.nextQuestionId, 10)
         }))
-      }))
+      })),
+      creationDate: new Date().toISOString() // Встановлюємо поточну дату
     };
 
     const isCreatingNewTest = this.route.snapshot.paramMap.get('id') === 'new';
     if (!isCreatingNewTest) {
-      // Update existing test
       this.testService.updateTest(editedTest);
     } else {
-      // Check if test already exists
       const existingTest = this.testService.getTestById(editedTest.id);
       if (existingTest) {
         this.errorMessage = `Тест з ID ${editedTest.id} вже існує. Виберіть інший ID.`;
         return;
       }
-      // Add new test
       this.testService.addTest(editedTest);
     }
 
     this.router.navigate(['/test-editor']);
   }
 
-
   cancel(): void {
     this.router.navigate(['/test-editor']);
   }
 
-
-  addQuestion(questionData: any = {questionId: '', questionText: '', answers: []}): void {
+  addQuestion(questionData: any = { questionId: '', questionText: '', answers: [], isEnd: false }): void {
     const questionGroup = this.fb.group({
       questionId: [questionData.questionId, [Validators.required, Validators.pattern('^[0-9]+$')]],
       questionText: [questionData.questionText, [Validators.required, Validators.minLength(3)]],
+      isEnd: [questionData.isEnd],
       answers: this.fb.array([])
     });
 

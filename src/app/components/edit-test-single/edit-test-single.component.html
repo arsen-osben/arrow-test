@@ -1,15 +1,16 @@
 <div class="container" *ngIf="editForm">
   <h2>Редагування тесту</h2>
   <form [formGroup]="editForm" (ngSubmit)="saveTest()">
+
     <div *ngIf="editForm.get('testId')?.invalid && editForm.get('testId')?.touched" class="error">
       <div *ngIf="editForm.get('testId')?.errors?.['pattern']">Тільки цифри</div>
       <div *ngIf="editForm.get('testId')?.errors?.['required']">Поле обов'язкове</div>
+      <div *ngIf="editForm.get('testId')?.errors?.['min']">Min</div>
     </div>
     <div class="form-group">
       <label for="testId">ID теста</label>
-      <input type="text" id="testId" formControlName="testId" class="form-control">
+      <input type="number" id="testId" formControlName="testId" class="form-control">
     </div>
-
 
     <div *ngIf="editForm.get('testName')?.invalid && editForm.get('testName')?.touched" class="error">
       <div *ngIf="editForm.get('testName')?.errors?.['required']">Поле обов'язкове</div>
@@ -26,6 +27,7 @@
 
     <div formArrayName="questions" class="question-list">
       <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+
         <div class="form-group">
           <label for="questionId-{{i}}">ID питання:</label>
           <input type="text" id="questionId-{{i}}" formControlName="questionId" class="form-control">
@@ -55,6 +57,7 @@
 
         <div formArrayName="answers" class="answer-list">
           <div *ngFor="let answer of getAnswers(i).controls; let j = index" [formGroupName]="j" class="answer">
+
             <div *ngIf="answer.get('text')?.invalid && answer.get('text')?.touched" class="error">
               <div *ngIf="answer.get('text')?.errors?.['required']">Поле обов'язкове</div>
             </div>
@@ -69,15 +72,14 @@
             </div>
             <div class="form-group">
               <label for="nextQuestionId-{{i}}-{{j}}">ID наступного кроку:</label>
-              <input type="number" id="nextQuestionId-{{i}}-{{j}}" formControlName="nextQuestionId"
-                     class="form-control">
+              <input type="number" id="nextQuestionId-{{i}}-{{j}}" formControlName="nextQuestionId" class="form-control">
             </div>
-            <button type="button" (click)="removeAnswer(i, j)" class="button button-remove">Видалити відповідь</button>
 
+            <button type="button" (click)="removeAnswer(i, j)" class="button button-remove">Видалити відповідь</button>
           </div>
+
           <button type="button" (click)="addAnswer(i)" class="button button-add-answer">Додати відповідь</button>
         </div>
-
       </div>
     </div>
 

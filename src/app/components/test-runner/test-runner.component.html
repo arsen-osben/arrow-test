@@ -1,10 +1,10 @@
 <div *ngIf="test">
 
   <div *ngIf="currentQuestion">
-    <div class="question">{{ currentQuestion.question }}</div>
+    <div class="question">{{ currentQuestion.question  | replaceStarWithSpace }}</div>
 
       <div class="item" *ngFor="let answer of currentQuestion.answers">
-        <button (click)="answerQuestion(answer.nextQuestionId)">{{ answer.text }}</button>
+        <button (click)="answerQuestion(answer.nextQuestionId)">{{ answer.text  | replaceStarWithSpace }}</button>
       </div>
 
   </div>

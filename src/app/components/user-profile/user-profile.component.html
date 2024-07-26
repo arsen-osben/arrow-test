@@ -1,0 +1,13 @@
+<div *ngIf="user && user.testResults && user.testResults.length > 0; else noResults">
+
+  <div *ngFor="let result of user.testResults">
+    <p>Тест ID: {{ result.testId }}</p>
+    <p>Останній крок: {{ result.lastStep }}</p>
+    <button (click)="navigateToTest(result.testId)">
+      Пройти ще раз
+    </button>
+  </div>
+</div>
+<ng-template #noResults>
+  <p>Немає результатів тестів.</p>
+</ng-template>

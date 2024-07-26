@@ -3,6 +3,7 @@ import {ReactiveFormsModule, FormBuilder, FormGroup, Validators} from '@angular/
 import {Router} from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -15,20 +16,29 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onSubmit() {
-    const {username, password} = this.loginForm.value;
-
-    if (this.authService.login(username, password)) {
-      this.router.navigate(['/test-editor']);
+  onLogin(): void {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      if (this.authService.login(username, password)) {
+        this.errorMessage = null;
+        this.router.navigate(['/test-editor']); // Перенаправлення на редактор тестів
+      } else {
+        this.errorMessage = 'Невірне ім\'я або пароль.';
+      }
     } else {
-      this.errorMessage = 'Невірний логін або пароль';
+      this.errorMessage = 'Будь ласка, заповніть всі поля правильно.';
     }
   }
+
 }
